@@ -9,5 +9,7 @@ public class Main {
         sorter.sort();
         sorter.printSums();
         sorter.printGroups();
+        sorter.subtraction();
+        sorter.printSubtractionResult();
     }
 }

@@ -9,6 +9,7 @@ public class Sorter {
     private Map<Character, Integer> groupUnpairedSymbols;
     private int sumPairedASCIIcodes;
     private int sumUnpairedASCIIcodes;
+    private int subtractionResult;
 
     public Sorter() {
         text = "";
@@ -16,16 +17,13 @@ public class Sorter {
         groupUnpairedSymbols = new HashMap<>();
         sumPairedASCIIcodes = 0;
         sumUnpairedASCIIcodes = 0;
+        subtractionResult = 0;
     }
 
     public void inputString(){
         Scanner in = new Scanner(System.in);
         System.out.println("Enter in the text");
         text = in.next();
-    }
-
-    public void printText(){
-        System.out.println(text.length() > 0 ? text : "No text entered");
     }
 
     public void sort(){
@@ -40,6 +38,13 @@ public class Sorter {
             }
             System.out.println((int)text.charAt(i));
         }
+    }
+    public void subtraction(){
+        subtractionResult = sumPairedASCIIcodes - sumUnpairedASCIIcodes;
+    }
+
+    public void printText(){
+        System.out.println(text.length() > 0 ? text : "No text entered");
     }
 
     public void printSums(){
@@ -62,6 +67,10 @@ public class Sorter {
             sum += (int) symbol.getValue();
         }
         System.out.println("Sum of unpaired ASCII codes: "+sum);
+    }
+
+    public void printSubtractionResult(){
+        System.out.println("Sum of paired ASCII codes - Sum of unpaired ASCII codes = "+subtractionResult);
     }
 
 

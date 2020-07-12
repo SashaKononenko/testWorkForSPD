@@ -22,7 +22,6 @@ public class Sorter {
 
     public void inputString(){
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter in the text");
         text = in.next();
     }
 
@@ -36,11 +35,38 @@ public class Sorter {
                 if(groupUnpairedSymbols.put(text.charAt(i),(int)text.charAt(i)) == null )
                     sumUnpairedASCIIcodes += (int)text.charAt(i);
             }
-            System.out.println((int)text.charAt(i));
         }
     }
     public void subtraction(){
         subtractionResult = sumPairedASCIIcodes - sumUnpairedASCIIcodes;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public Map<Character, Integer> getGroupPairedSymbols() {
+        return groupPairedSymbols;
+    }
+
+    public Map<Character, Integer> getGroupUnpairedSymbols() {
+        return groupUnpairedSymbols;
+    }
+
+    public int getSumPairedASCIIcodes() {
+        return sumPairedASCIIcodes;
+    }
+
+    public int getSumUnpairedASCIIcodes() {
+        return sumUnpairedASCIIcodes;
+    }
+
+    public int getSubtractionResult() {
+        return subtractionResult;
     }
 
     public void printText(){

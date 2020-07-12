@@ -7,6 +7,7 @@ public class Main {
         sorter.inputString();
         sorter.printText();
         sorter.sort();
+        sorter.printSums();
         sorter.printGroups();
     }
 }

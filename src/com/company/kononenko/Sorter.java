@@ -7,11 +7,15 @@ public class Sorter {
     private String text;
     private Map<Character, Integer> groupPairedSymbols;
     private Map<Character, Integer> groupUnpairedSymbols;
+    private int sumPairedASCIIcodes;
+    private int sumUnpairedASCIIcodes;
 
     public Sorter() {
         text = "";
         groupPairedSymbols = new HashMap<>();
         groupUnpairedSymbols = new HashMap<>();
+        sumPairedASCIIcodes = 0;
+        sumUnpairedASCIIcodes = 0;
     }
 
     public void inputString(){
@@ -28,12 +32,19 @@ public class Sorter {
         text = text.toUpperCase();
         for (int i = 0; i < text.length(); i++) {
             if (text.charAt(i) % 2 == 0) {
-                groupPairedSymbols.put(text.charAt(i),(int)text.charAt(i));
+                if(groupPairedSymbols.put(text.charAt(i),(int)text.charAt(i)) == null )
+                    sumPairedASCIIcodes += (int)text.charAt(i);
             } else {
-                groupUnpairedSymbols.put(text.charAt(i),(int)text.charAt(i));
+                if(groupUnpairedSymbols.put(text.charAt(i),(int)text.charAt(i)) == null )
+                    sumUnpairedASCIIcodes += (int)text.charAt(i);
             }
             System.out.println((int)text.charAt(i));
         }
+    }
+
+    public void printSums(){
+        System.out.println("Sum of paired ASCII codes: "+sumPairedASCIIcodes);
+        System.out.println("Sum of unpaired ASCII codes: "+sumUnpairedASCIIcodes);
     }
 
     public void printGroups(){
@@ -45,7 +56,7 @@ public class Sorter {
         }
         System.out.println("Sum of paired ASCII codes: "+sum);
         sum = 0;
-        System.out.println("Group unpaired symbols");
+        System.out.println("\nGroup unpaired symbols");
         for (Map.Entry symbol:groupUnpairedSymbols.entrySet()) {
             System.out.printf("| %c | %3d |\n",symbol.getKey(),symbol.getValue());
             sum += (int) symbol.getValue();
